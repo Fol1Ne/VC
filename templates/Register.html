@@ -1,0 +1,27 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'Base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-light" style="background-color: #006699;">
+        <div class="container">
+            <a class="navbar-brand" style="color: #ffffff;">#лучшедома</a>
+
+            <a class="navbar-brand navbar-center" style="color: #ffffff;">VCiti</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                {{ wtf.quick_form(form) }}
+                <a href="/">Go To Login</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

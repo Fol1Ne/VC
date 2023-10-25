@@ -1,0 +1,70 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}
+    Title
+{% endblock %}
+
+{% block metas %}
+    {{ super() }}
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-light" style="background-color: #006699;">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" style="color: #ffffff;">#лучшедома</a>
+            </div>
+            <div class="row">
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="color: #ffffff; background-color: #006699;">{{ currentUserName }}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Home">Моя страница</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/Edit">Редактировать</a></li>
+                            <li><a href="/Settings">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/">Выйти</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="/Home">Моя страница</a>
+                <br>
+                <a href="/News">Новости</a>
+                <br>
+                <a href="/Message">Сообщение</a>
+                <br>
+                <a href="/Friends">Друзья</a>
+                <br>
+                <a href="/Community">Сообщества</a>
+                <br>
+                <a href="/Photo">Фотографи</a>
+            </div>
+
+            <div class="col-md-9">
+                {% block pageContent %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

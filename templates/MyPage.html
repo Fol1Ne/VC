@@ -1,0 +1,128 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    My Page
+{% endblock %}
+
+{% block pageContent %}
+<div class="row">
+    <div class="col-md-4">
+        <div style="background-color: #cccccc; width: 220px; height: 250px;">
+            <img src='{{currentUserAvatar}}' width="220px", height="250px">
+        </div>
+
+        <a href="/SetImage" class="btn btn-default">Change Avatar Photo</a>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 100px;">
+            Gifts
+        </div>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 125px;">
+            Friends
+        </div>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 125px;">
+            Friends Online
+        </div>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 200px;">
+            Subscriptions
+        </div>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 125px;">
+            Photo Albums
+        </div>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 125px;">
+            Audio Recordings
+        </div>
+
+        <hr>
+
+    </div>
+
+    <div class="col-md-8">
+        <div style="background-color: #cccccc; height: 400px;">
+            {{currentUserName + ' ' + currentUserSurname}}
+            <hr>
+            город: {{ currentUserNativeCity }}
+            <hr>
+            друга: 0
+            <hr>
+            подписчика: 0
+            <hr>
+            фотографий: {{currentUserPhotos|length}}
+            <hr>
+            видеозапись: 0
+            <hr>
+            аудиозаписи: 0
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <a href="/AddImage" class="btn btn-default">Add Photo</a>
+            <a href="/ViewImage" class="btn btn-default">View Photos</a>
+         </div>
+        <div style="height: 150px;">
+            <div class="row">
+                {% if currentUserPhotos|length <= 4 %}
+                    {% for i in currentUserPhotos %}
+                        <div class="col-md-3">
+                            <img src='{{ i }}' width="120px">
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for i in range(4) %}
+                        <div class="col-md-3">
+                            <img src='{{ currentUserPhotos[i] }}' width="120px">
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        <hr>
+
+        <div style="background-color: #cccccc; height: 230px">
+            <div class="row">
+                <div class="col-md-6">
+                    {{ wtf.quick_form(form) }}
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        {% for i in currentUserPosts %}
+        <div style="background-color: #cccccc; height: 700px;">
+            <div class="row">
+                <div class="col-md-12" style="word-wrap: break-word; overlof: hidden">
+                    {{ i[0] }}
+                </div>
+            </div>
+            <hr>
+            <img src='{{ i[1] }}' width="300px", height="300px">
+            <hr>
+            {{ i[2] }}
+        </div>
+
+        <hr>
+        {% endfor %}
+
+    </div>
+
+</div>
+{% endblock %}

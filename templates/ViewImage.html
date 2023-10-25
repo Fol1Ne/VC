@@ -1,0 +1,15 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    ViewImages
+{% endblock %}
+
+{% block pageContent %}
+    <div class="container">
+        <div class="row">
+            {% for i in currentUserPhotos %}
+                <img src='{{ i }}' width="200px", height="200px">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
